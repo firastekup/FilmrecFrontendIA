@@ -8,12 +8,13 @@ import AdminDashboard from './components/Dashboard/AdminDashboard';
 import UserDashboard from './components/Dashboard/UserDashboard';
 import AddFilm from './components/Film/AddFilm';
 import FilmList from './components/Film/FilmList';
+import AddAbonnement from './components/Abonnement/AddAbonnement';
+import AbonnementList from './components/Abonnement/AbonnementList';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [role, setRole] = useState(null);
 
-    // Fonction pour mettre à jour l'état d'authentification après login ou logout
     const updateAuth = (isAuth, userRole) => {
         setIsAuthenticated(isAuth);
         setRole(userRole);
@@ -40,6 +41,14 @@ const App = () => {
                 <Route
                     path="/add-film"
                     element={isAuthenticated && role === 'admin' ? <AddFilm /> : <Navigate to="/login" />}
+                />
+                <Route
+                    path="/abonnements/create"
+                    element={isAuthenticated && role === 'admin' ? <AddAbonnement /> : <Navigate to="/login" />}
+                />
+                <Route
+                    path="/abonnements"
+                    element={isAuthenticated ? <AbonnementList /> : <Navigate to="/login" />}
                 />
                 <Route
                     path="/dashboard/admin"

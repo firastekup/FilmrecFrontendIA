@@ -1,31 +1,85 @@
 // src/components/Dashboard/UserDashboard.js
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const UserDashboard = () => {
+    const [username, setUsername] = useState('');
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+            setUsername(storedUsername);
+        }
+    }, []);
+
     const handleLogout = () => {
-        // Supprime le token et le rôle de localStorage
         localStorage.removeItem('access');
         localStorage.removeItem('role');
-        
-        // Redirige vers la page de connexion
+        localStorage.removeItem('username');  // Clear the username from localStorage
         navigate('/login');
     };
 
     return (
-        <div>
-            <h2>User Dashboard</h2>
-            <nav>
-                <ul>
-                    <li><Link to="/films">View Films</Link></li>
+        <div style={dashboardStyle}>
+            <header style={headerStyle}>
+                <h2>Welcome, {username || 'User'}</h2>  {/* Display the username */}
+                <button onClick={handleLogout} style={logoutBtnStyle}>Logout</button>
+            </header>
+            <nav style={navStyle}>
+                <ul style={navListStyle}>
+                    <li><Link to="/films" style={navLinkStyle}>View Films</Link></li>
                 </ul>
             </nav>
-            <button onClick={handleLogout}>Logout</button>
         </div>
     );
+};
+
+// Styling for User Dashboard
+const dashboardStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#111',
+    color: '#fff',
+    minHeight: '100vh',
+    padding: '20px',
+};
+
+const headerStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '20px',
+};
+
+const logoutBtnStyle = {
+    padding: '10px 20px',
+    backgroundColor: '#e50914',
+    border: 'none',
+    color: '#fff',
+    cursor: 'pointer',
+    borderRadius: '5px',
+};
+
+const navStyle = {
+    backgroundColor: '#222',
+    padding: '15px',
+    borderRadius: '8px',
+};
+
+const navListStyle = {
+    listStyleType: 'none',
+    paddingLeft: '0',
+};
+
+const navLinkStyle = {
+    color: '#fff',
+    textDecoration: 'none',
+    display: 'block',
+    padding: '10px 0',
+    borderBottom: '1px solid #444',
+    transition: 'background-color 0.3s',
 };
 
 export default UserDashboard;
