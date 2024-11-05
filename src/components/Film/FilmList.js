@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './FilmList.css'; // Assurez-vous d'importer le fichier CSS
 
 const FilmList = () => {
     const [films, setFilms] = useState([]);
@@ -25,24 +26,26 @@ const FilmList = () => {
     }, []);
 
     return (
-        <div>
+        <div className="film-list">
             <h2>Film List</h2>
-            <ul>
+            <div className="film-grid">
                 {films.length > 0 ? (
                     films.map((film) => (
-                        <li key={film.id}>
-                            <h3>{film.title}</h3>
-                            <p>{film.description}</p>
-                            <p>Release Date: {film.release_date}</p>
-                            <p>Genre: {film.genre}</p>
-                            <p>Duration: {film.duration} minutes</p>
-                            <img src={film.image} alt={film.title} style={{ width: '150px' }} />
-                        </li>
+                        <div className="film-card" key={film.id}>
+                            <img src={film.image} alt={film.title} className="film-image" />
+                            <div className="film-info">
+                                <h3 className="film-title">{film.title}</h3>
+                                <p className="film-description">{film.description}</p>
+                                <p className="film-release">Release Date: {film.release_date}</p>
+                                <p className="film-genre">Genre: {film.genre}</p>
+                                <p className="film-duration">Duration: {film.duration} minutes</p>
+                            </div>
+                        </div>
                     ))
                 ) : (
                     <p>No films available.</p>
                 )}
-            </ul>
+            </div>
         </div>
     );
 };

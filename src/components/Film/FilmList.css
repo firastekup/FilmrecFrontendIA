@@ -1,0 +1,50 @@
+/* src/components/Film/FilmList.css */
+
+.film-list {
+    padding: 20px;
+    background-color: #141414; /* Couleur de fond sombre */
+    color: white; /* Texte en blanc */
+}
+
+.film-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Grille responsive */
+    gap: 20px; /* Espacement entre les éléments */
+}
+
+.film-card {
+    background-color: #1e1e1e; /* Fond des cartes */
+    border-radius: 8px; /* Coins arrondis */
+    overflow: hidden; /* Masquer les débordements */
+    transition: transform 0.2s; /* Effet de transition */
+}
+
+.film-card:hover {
+    transform: scale(1.05); /* Zoom au survol */
+}
+
+.film-image {
+    width: 100%; /* Image prend toute la largeur */
+    height: auto; /* Hauteur automatique pour le ratio */
+}
+
+.film-info {
+    padding: 15px; /* Espacement interne */
+}
+
+.film-title {
+    font-size: 1.2em; /* Taille du titre */
+    margin: 0; /* Pas de marge */
+}
+
+.film-description {
+    font-size: 0.9em; /* Taille de la description */
+    margin: 10px 0; /* Marges verticales */
+}
+
+.film-release,
+.film-genre,
+.film-duration {
+    font-size: 0.8em; /* Taille des informations supplémentaires */
+    margin: 5px 0; /* Marges verticales */
+}

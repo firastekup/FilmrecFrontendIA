@@ -1,0 +1,46 @@
+/* src/components/Film/AddFilm.css */
+
+.add-film-form {
+    max-width: 500px; /* Largeur maximale */
+    margin: 20px auto; /* Centrage */
+    padding: 20px; /* Espacement interne */
+    background-color: #141414; /* Fond sombre */
+    border-radius: 8px; /* Coins arrondis */
+    color: white; /* Texte blanc */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre portée */
+}
+
+.add-film-form h2 {
+    text-align: center; /* Centrage du titre */
+    margin-bottom: 20px; /* Marge inférieure */
+}
+
+.add-film-form input,
+.add-film-form textarea {
+    width: 100%; /* Largeur complète */
+    padding: 10px; /* Espacement interne */
+    margin-bottom: 15px; /* Marge inférieure */
+    border: 1px solid #555; /* Bordure */
+    border-radius: 4px; /* Coins arrondis */
+    background-color: #222; /* Fond des champs */
+    color: white; /* Texte blanc */
+}
+
+.add-film-form input[type="file"] {
+    padding: 3px; /* Ajustement pour le champ de fichier */
+}
+
+.add-film-form button {
+    width: 100%; /* Largeur complète */
+    padding: 10px; /* Espacement interne */
+    background-color: #e50914; /* Couleur de bouton */
+    color: white; /* Texte blanc */
+    border: none; /* Pas de bordure */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur de main */
+    font-size: 16px; /* Taille du texte */
+}
+
+.add-film-form button:hover {
+    background-color: #f40612; /* Couleur au survol */
+}

@@ -1,5 +1,8 @@
+// src/components/Film/AddFilm.js
+
 import React, { useState } from 'react';
 import axios from 'axios';
+import './AddFilm.css'; // Assurez-vous d'importer le fichier CSS
 
 const AddFilm = () => {
     const [filmData, setFilmData] = useState({
@@ -43,7 +46,7 @@ const AddFilm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="add-film-form" onSubmit={handleSubmit}>
             <h2>Add Film</h2>
             <input
                 type="text"
