@@ -1,5 +1,3 @@
-// src/components/Film/AddFilm.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -34,7 +32,7 @@ const AddFilm = () => {
             const response = await axios.post('http://localhost:8000/api/films/create/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Authorization': `Bearer ${localStorage.getItem('access')}`
+                    'Authorization': `Bearer ${localStorage.getItem('access')}` // Assurez-vous que le token est valide
                 }
             });
             alert('Film added successfully!');
@@ -47,13 +45,58 @@ const AddFilm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <h2>Add Film</h2>
-            <input type="text" name="title" placeholder="Title" onChange={handleChange} required />
-            <textarea name="description" placeholder="Description" onChange={handleChange} required></textarea>
-            <input type="date" name="release_date" onChange={handleChange} required />
-            <input type="text" name="genre" placeholder="Genre" onChange={handleChange} required />
-            <input type="number" name="duration" placeholder="Duration (in minutes)" onChange={handleChange} required />
-            <input type="file" name="image" onChange={handleFileChange} required />
-            <input type="text" name="abonnement" placeholder="Abonnement ID" onChange={handleChange} required />
+            <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                value={filmData.title}
+                onChange={handleChange}
+                required
+            />
+            <textarea
+                name="description"
+                placeholder="Description"
+                value={filmData.description}
+                onChange={handleChange}
+                required
+            />
+            <input
+                type="date"
+                name="release_date"
+                value={filmData.release_date}
+                onChange={handleChange}
+                required
+            />
+            <input
+                type="text"
+                name="genre"
+                placeholder="Genre"
+                value={filmData.genre}
+                onChange={handleChange}
+                required
+            />
+            <input
+                type="number"
+                name="duration"
+                placeholder="Duration (in minutes)"
+                value={filmData.duration}
+                onChange={handleChange}
+                required
+            />
+            <input
+                type="file"
+                name="image"
+                onChange={handleFileChange}
+                required
+            />
+            <input
+                type="text"
+                name="abonnement"
+                placeholder="Abonnement ID"
+                value={filmData.abonnement}
+                onChange={handleChange}
+                required
+            />
             <button type="submit">Add Film</button>
         </form>
     );
